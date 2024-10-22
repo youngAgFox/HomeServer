@@ -72,7 +72,7 @@ table {
 * {
     font-size: var(--font-size-base);
     font-weight: 400;
-    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
     box-sizing: border-box;
 }
