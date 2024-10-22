@@ -1,0 +1,14 @@
+<head th:fragment="common_header">
+
+  <title th:replace="${title}">FRAGMENT_ERROR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+  
+  <link rel="stylesheet" th:href="@{/static/css/general.css}" type="text/css">
+  <link rel="shortcut icon" th:href="@{/static/images/favicon.ico}" type="image/x-icon">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+ <!-- Per-page placeholder for additional links -->
+ <!-- Need the outer th:block since the replace has higher precedence than the conditional (DUMB) -->
+  <th:block th:replace="${links}"/>
+  <th:block th:replace="${scripts}"/>
+</head>

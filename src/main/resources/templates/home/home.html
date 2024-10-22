@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{ base :: common_header( title=~{::title}, scripts=~{::script} ?: ~{}, links=~{::link} ?: ~{}) }">
+    <meta charset="UTF-8">
+    <title>Home | HomeServer</title>
+    <link rel="stylesheet" href="/static/css/general.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+    <script type="module" src="/static/home/home.js"></script>
+</head>
+<body>
+    <div id="header-area" class="flex-left fwidth">
+        <div id="header" class="flex fwidth" style="justify-content: space-between; align-items: center;">
+            <div class="header-img flex-left" style="height: min-content; align-items: end;">
+                <a href="/templates/home/home.html" th:href="@{/home/home}" id="home-logo" title="Home">
+                    <img src="/static/images/favicon.ico" alt="HomeServer Home">
+                </a>
+                <a th:href="@{/home/fridge}" href="/templates/home/fridge.html" title="Fridge">
+                    <img src="/static/images/fridge.png" alt="HomeServer Fridge App">
+                </a>
+            </div>
+            <h1 class="fg-white" style="position: relative; top: 3px;">Welcome Home</h1>
+            <div class="header-img flex h-margin-10">
+                <a href="/logout" title="Logout">
+                    <img src="/static/images/logout.png" alt="logout">
+                </a>
+            </div>
+        </div>
+    </div>
+    <section id="home-content" style="padding: 1em 2em; align-self: stretch;">
+        <section id="home-news" class="fwidth rel" style="overflow-y: auto">
+            <h2 class="tcenter flex rel" style="overflow: visible;">
+                News & Events
+            </h2>
+        </section>
+        
+    </section>
+    <div id="home-controls" class="abs flex-col" style="top: calc(100% - 60px); left: 25px;">
+        <button id="home-control-btn" class="flex" style="padding: 0 5px; font-size: 32px; ">+</button>
+    </div>
+</body>
+</html>

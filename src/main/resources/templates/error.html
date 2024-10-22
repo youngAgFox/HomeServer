@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{ base :: common_header( title=~{::title}, scripts=~{::script} ?: ~{}, links=~{::link} ?: ~{}) }">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR | HomeServer</title>
+    <script type="module" src="/static/errors.js" defer></script>
+</head>
+<body>
+    <h1 id="error-exclamation" class="h-margin-10"></h1>
+    <p>You should tell AJ about how much he sucks at being a developer, and to fix this garbage. 
+        Ideally, sending him the below info of course - unless your rather fond of whatever bug you stumbled across.</p>
+    <p>Click the link to go to the <a th:href="@{/login}" href="/templates/login.html">login page</a>.</p>
+    <p>If it is user error on the other hand... Just be better.</p>
+    <h2>Errors</h2>
+    <ul th:if="${#fields.allErrors()}">
+        <!-- <li th:each="err : ${#fields.allErrors()}" th:text="${err}"></li> -->
+    </ul>
+</body>
+</html>

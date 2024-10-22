@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <!-- Replaces the head element with the common-header fragment, passing in the current title and link(s) elements  -->
+    <head th:replace="~{ base :: common_header( title=~{::title}, scripts=~{::script} ?: ~{}, links=~{::link} ?: ~{}) }">
+        <title>Login | HomeServer</title>
+        <link rel="stylesheet" href="/static/css/general.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+    </head>
+    <body class="flex-col rel">
+        <div class="rel fwidth flex" style="align-items: center; justify-content: center;">
+            <div th:if="${param.error}" class="">
+                <span class="error">Invalid username and password.</span>
+            </div>
+            <div th:if="${param.logout}" class="">
+                You have been logged out.
+            </div>
+        </div>
+        <form th:action="@{/login}" method="post" class="flex-col fwidth rel" style="margin-top: 10px; margin-bottom: 10px;">
+                <input type="text" name="username" placeholder="Username" style="width: min(80%, 30ch)"/>
+                <input type="password" name="password" placeholder="Password" style="width: min(80%, 30ch)"/>
+                <input type="submit" value="Sign In" style="margin-top: 10px"/>
+        </form>
+        <p class="tcenter">Pretty sure you have never been here before? You should <a href="/register" sytle="text-decoration: underline;">create an account</a> instead.</p>
+    </body>
+</html>

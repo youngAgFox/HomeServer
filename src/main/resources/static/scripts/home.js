@@ -1,0 +1,1 @@
+const menuControls = document.getElementById("home-controls");

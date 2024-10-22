@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{ base :: common_header( title=~{::title}, scripts=~{::script} ?: ~{}, links=~{::link} ?: ~{}) }">
+        <title>Hello | HomeServer</title>
+        <link>
+    </head>
+    <body>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>In Stock</th>
+            </tr>
+            <tr th:each="prod : ${prods}">
+                <td th:text="${prod.name}">Error</td>
+                <td th:text="|$${prod.price}|">$0.00</td>
+                <td th:text="${prod.inStock}? 'yes' : 'no'">no</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Property</th>
+                <th>Value</th>
+            </tr>
+            <tr th:each="entry : ${user}">
+                <td th:text="${entry.getKey()}"></td>
+                <td th:text="${entry.getValue()}"></td>
+            </tr>
+            <!-- if the user is null then say there is no user -->
+            <tr th:if="not ${user}">
+                <td colspan="2"><span th:text="|There is no User with the username '|"></span><span sec:authentication="name"></span><span th:text="'\''"></span></td>
+            </tr>
+        </table>
+    </body>
+</html>

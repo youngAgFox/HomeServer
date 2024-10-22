@@ -1,0 +1,332 @@
+/* CSS Reset */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ---------- imports ---------- */
+@font-face {
+    font-family: "Roboto";
+    src:
+        local("Roboto"),
+        url("/static/fonts/Roboto/Roboto-Regular.ttf") format("truetype")
+}
+
+/* ---------- general.css ---------- */
+
+:root {
+    --color-brown: #362417;
+    --color-l-brown: #b99384;
+    --color-l-blue: #5ADBFF;
+    --color-blue: #28587B;
+    --color-d-blue: #07004D;
+    --color-white: #d6d3d3;
+    --color-l-grey: #b1b1b1;
+    --color-grey: #5E6472;
+    --color-d-grey: #202229;
+    --color-black: #2F2F2F;
+    --color-l-purple: #704d63;
+    --color-d-purple: #26081C;
+    --color-l-red: #FFA0AC;
+    --color-tan: #5B5750;
+    --color-grey-green: #52AA8A;
+    --color-l-green: #8CB369;
+    --color-green: #4C956C;
+    --color-l-yellow: #F4E285;
+    --color-l-orange: #F4A259;
+
+    --font-size-base: 1em;
+}
+
+* {
+    font-size: var(--font-size-base);
+    font-weight: 400;
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+#header-area {
+    background-color: var(--color-blue);
+    border-bottom: solid 2px var(--color-grey);
+    height: max(5%, 60px); 
+    gap: 15px; 
+    padding: 5px 2px; 
+    align-items: center; 
+    padding-bottom: 10px;
+}
+
+.header-img img {
+    position: relative;
+    top: 3px;
+    width: 36px;
+    height: 36px;
+}
+
+.header-img img:hover {
+    transform: scale(1.05);
+    filter: hue-rotate(-45deg);
+}
+
+.invalid, .error {
+    color: var(--color-l-red);
+}
+
+h1 { font-size: calc(var(--font-size-base) * 2); }
+h2 { font-size: calc(var(--font-size-base) * 1.5); }
+h3 { font-size: calc(var(--font-size-base) * 1.25); }
+
+html, body {
+    height: 100%;
+    background-color: var(--color-d-grey);
+    color: var(--color-white);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    padding: 1ch 2ch;
+}
+
+a {
+    color: var(--color-l-blue);
+    text-decoration: underline 1px solid;
+}
+
+a:visited {
+    color: var(--color-l-brown);
+}
+
+button {
+    border-radius: 5px;
+    background-color: var(--color-white);
+}
+
+button:hover {
+    filter: hue-rotate(60deg) invert(10%);
+}
+
+input[type="submit"] {
+    padding: 0.8ch 1.2ch;
+    min-width: 80px;
+    border-radius: 10px;
+    border: var(--color-grey) solid 2px;
+    color: var(--color-l-brown);
+    background-color: var(--color-d-purple);
+}
+
+input[type="submit"]:hover:not([disabled]) {
+    color: var(--color-white);
+}
+
+button[disabled], input[disabled] {
+    filter: grayscale();
+}
+
+input, input[type="text"], input[type="password"], input[type="number"], input[type="email"] {
+    border-radius: 3px;
+    border-style: solid;
+    outline: none;
+    padding: 0.25rem 0.5rem;
+    color: var(--color-black);
+    background-color: var(--color-l-grey);
+    border-color: var(--color-grey);
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus, input[type="email"]:focus {
+    border-color: var(--color-l-brown);
+}
+
+input:hover:not([disabled]) {
+    border-color: var(--color-l-orange);
+}
+
+input.invalid {
+    border: solid 2px var(--color-l-red) !important;
+}
+
+input.valid {
+    border: solid 2px var(--color-green);
+}
+
+.bg-brown { background-color: var(--color-brown); }
+.bg-l-brown { background-color: var(--color-l-brown); }
+.bg-l-blue { background-color: var(--color-l-blue); }
+.bg-blue { background-color: var(--color-blue); }
+.bg-d-blue { background-color: var(--color-d-blue); }
+.bg-white { background-color: var(--color-white); }
+.bg-grey { background-color: var(--color-grey); }
+.bg-d-grey { background-color: var(--color-d-grey); }
+.bg-d-purple { background-color: var(--color-d-purple); }
+.bg-tan { background-color: var(--color-tan); }
+.bg-l-green { background-color: var(--color-l-green); }
+.bg-l-yellow { background-color: var(--color-l-yellow); }
+.bg-l-orange { background-color: var(--color-l-orange); }
+
+.fg-brown { color: var(--color-brown); }
+.fg-l-brown { color: var(--color-l-brown); }
+.fg-l-blue { color: var(--color-l-blue); }
+.fg-blue { color: var(--color-blue); }
+.fg-d-blue { color: var(--color-d-blue); }
+.fg-white { color: var(--color-white); }
+.fg-grey { color: var(--color-grey); }
+.fg-d-grey { color: var(--color-d-grey); }
+.fg-d-purple { color: var(--color-d-purple); }
+.fg-tan { color: var(--color-tan); }
+.fg-l-green { color: var(--color-l-green); }
+.fg-l-yellow { color: var(--color-l-yellow); }
+.fg-l-orange { color: var(--color-l-orange); }
+
+.error {
+    color: red;
+}
+
+.grid {
+    display: grid;
+    gap: 5px;
+}
+
+.flex {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-left {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: start;
+}
+
+.flex-col {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fwidth {
+    width: 100%;
+}
+
+.abs {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.rel {
+    position: relative;
+    top: 0;
+    left: 0;    
+}
+
+.margin-10 {
+    margin: 10px;
+}
+.v-margin-10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.v-margin-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.h-margin-10 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.h-margin-10p {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.h-margin-20p {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.pad-10 {
+    padding: 10px;
+}
+.pad-2c {
+    padding: 2ch;
+}
+.v-pad-2c {
+    padding-top: 2ch;
+    padding-bottom: 2ch;
+}
+.h-pad-2c {
+    padding-left: 2ch;
+    padding-right: 2ch;
+}
+
+.tcenter {
+    text-align: center;
+}
+
+/* Initially set to hidden, and enable them based on media queries */
+.phone-only, .tablet-only, .desktop-only {
+    display: none;
+}
+
+@media screen and (max-width: 400px) {
+    .phone-only {
+        display: block;
+    }
+
+    :root {
+        --font-size-base: 0.9em;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 770px) {
+    .tablet-only {
+        display: block;
+    }
+
+    :root {
+        --font-size-base: 0.95em;
+    }
+}
+
+@media screen and (min-width: 771px) {
+    .desktop-only {
+        display: block;
+    }
+}
