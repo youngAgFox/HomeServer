@@ -5,28 +5,37 @@
     <title>Home | HomeServer</title>
     <link rel="stylesheet" href="/static/css/general.css">
     <link rel="stylesheet" href="/static/css/home.css">
-    <script type="module" src="/static/home/home.js"></script>
+    <script type="module" src="/static/scripts/home.js"></script>
 </head>
 <body>
     <div id="header-area" class="flex-left fwidth">
-        <div id="header" class="flex fwidth" style="justify-content: space-between; align-items: center;">
+        <div id="header" class="flex fwidth" style="justify-content: space-between; align-items: center; height: 100%;">
             <div class="header-img flex-left" style="height: min-content; align-items: end;">
-                <a href="/templates/home/home.html" th:href="@{/home/home}" id="home-logo" title="Home">
-                    <img src="/static/images/favicon.ico" alt="HomeServer Home">
+                <a href="/templates/home/home.html" th:href="@{/home/home}" id="home-logo" title="Home" style="filter: hue-rotate(40deg)">
+                    <img src="/static/images/house.png" alt="HomeServer Home">
                 </a>
                 <a th:href="@{/home/fridge}" href="/templates/home/fridge.html" title="Fridge">
                     <img src="/static/images/fridge.png" alt="HomeServer Fridge App">
                 </a>
-            </div>
-            <h1 class="fg-white" style="position: relative; top: 3px;">Welcome Home</h1>
-            <div class="header-img flex h-margin-10">
-                <a href="/logout" title="Logout">
-                    <img src="/static/images/logout.png" alt="logout">
+                <a th:href="@{/home/gym}" href="/templates/home/gym.html" title="Gym">
+                    <img src="/static/images/dumbbell.png" alt="HomeServer Gym App" style="filter: hue-rotate(130deg);">
                 </a>
+            </div>
+            <h1 class="fg-white tcenter">Welcome Home</h1>
+            <div class="header-img flex" style="margin-right: 10px; gap: 10px;">
+                <a th:href="@{/home/settings}" href="/templates/home/settings.html" title="Account Settings">
+                    <img src="/static/images/account-settings.png" alt="HomeServer Account Settings">
+                </a>
+                <form th:action="@{/logout}" method="post">
+                    <input type="image" title="Logout" src="/static/images/logout.png" alt="Logout Button">
+                </form>
             </div>
         </div>
     </div>
     <section id="home-content" style="padding: 1em 2em; align-self: stretch;">
+        <section>
+            <h2 class="tcenter flex">Test</h2>
+        </section>
         <section id="home-news" class="fwidth rel" style="overflow-y: auto">
             <h2 class="tcenter flex rel" style="overflow: visible;">
                 News & Events
@@ -34,8 +43,12 @@
         </section>
         
     </section>
-    <div id="home-controls" class="abs flex-col" style="top: calc(100% - 60px); left: 25px;">
-        <button id="home-control-btn" class="flex" style="padding: 0 5px; font-size: 32px; ">+</button>
+    <div id="home-controls" class="abs flex-col" style="top: calc(100% - 60px); left: 25px; ">
+        <input id="home-controls-btn" type="image" src="/static/images/add.png" alt="Open Home Controls Menu">
+        <div id="home-sub-controls">
+            <input type="image" src="/static/images/news.png" alt="">
+            <input type="image" src="/static/images/" alt="">
+        </div>
     </div>
 </body>
 </html>

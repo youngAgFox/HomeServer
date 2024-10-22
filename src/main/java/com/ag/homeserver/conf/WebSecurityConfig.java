@@ -13,8 +13,6 @@ import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.ForwardAuthenticationSuccessHandler;
 
 import javax.sql.DataSource;
 import java.util.Map;
@@ -36,9 +34,9 @@ public class WebSecurityConfig {
 		http
 			.authorizeHttpRequests((requests) -> requests
 //							.anyRequest().permitAll()
-				.requestMatchers("/", "/login", "/register", "/error", "/static/images/**", "/static/css/**",
-						"/static/scripts/register-validate.js", "static/scripts/errors.js").permitAll()
-				.requestMatchers("/home/**", "/scripts/**").authenticated()
+				.requestMatchers("/", "/register", "/error", "/static/images/**", "/static/css/**",
+						"/static/scripts/register-validate.js", "/static/scripts/errors.js", "/static/fonts/**").permitAll()
+				.requestMatchers("/home/**", "/static/scripts/**").authenticated()
 				.requestMatchers("/admin").hasAuthority("admin")
 			)
 			.formLogin((form) -> form
@@ -46,7 +44,11 @@ public class WebSecurityConfig {
 				.loginPage("/login")
 				.permitAll()
 			)
-			.logout(LogoutConfigurer::permitAll);
+			.logout((logout) -> logout.logoutUrl("/logout")
+					.logoutSuccessUrl("/login?logout")
+					.invalidateHttpSession(true)
+					.deleteCookies("JSESSIONID")
+					.permitAll());
 		return http.build();
 	}
 

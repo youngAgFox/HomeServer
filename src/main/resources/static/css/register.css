@@ -1,0 +1,12 @@
+form label {
+    color: var(--color-l-yellow);
+}
+
+#register-form {
+    grid-template-columns: 12ch 1fr; 
+    min-width: 20ch; 
+    max-width: 80ch; 
+    align-items: center; 
+    justify-content: center; 
+    width: 80%;
+}

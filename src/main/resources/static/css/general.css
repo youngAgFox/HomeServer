@@ -10,6 +10,7 @@
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+    overflow: inherit;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -66,46 +67,48 @@ table {
     --color-l-yellow: #F4E285;
     --color-l-orange: #F4A259;
 
-    --font-size-base: 1em;
+    --font-size-base: 16px;
+    --font-size-calc: calc(var(--font-size-base) + 0.15em);
 }
 
 * {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-calc);
     font-weight: 400;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
     box-sizing: border-box;
 }
 
 #header-area {
+    display: flex;
     background-color: var(--color-blue);
     border-bottom: solid 2px var(--color-grey);
-    height: max(5%, 60px); 
+    height: 60px; 
     gap: 15px; 
-    padding: 5px 2px; 
+    padding: 0 5px; 
     align-items: center; 
-    padding-bottom: 10px;
+    overflow: visible;
 }
 
-.header-img img {
+.header-img img, .header-img input[type="image"] {
     position: relative;
     top: 3px;
     width: 36px;
     height: 36px;
+    transition: filter 0.15s linear, transform 0.15s linear;
 }
 
-.header-img img:hover {
-    transform: scale(1.05);
-    filter: hue-rotate(-45deg);
+.header-img img:hover, .header-img input[type="image"]:hover {
+    filter: hue-rotate(-45deg) !important;
+    transform: scale(1.15);
 }
 
 .invalid, .error {
     color: var(--color-l-red);
 }
 
-h1 { font-size: calc(var(--font-size-base) * 2); }
-h2 { font-size: calc(var(--font-size-base) * 1.5); }
-h3 { font-size: calc(var(--font-size-base) * 1.25); }
+h1 { font-size: calc(var(--font-size-calc) * 1.85); }
+h2 { font-size: calc(var(--font-size-calc) * 1.5); }
+h3 { font-size: calc(var(--font-size-calc) * 1.25); }
 
 html, body {
     height: 100%;
@@ -116,6 +119,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 p {
@@ -132,15 +136,23 @@ a:visited {
 }
 
 button {
+    padding: 0.5ch 0.25ch;
     border-radius: 5px;
     background-color: var(--color-white);
 }
 
-button:hover {
+button:hover:not(:disabled) {
     filter: hue-rotate(60deg) invert(10%);
 }
 
-input[type="submit"] {
+form input[type="image"] {
+    background: none;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+}
+
+form input[type="submit"] {
     padding: 0.8ch 1.2ch;
     min-width: 80px;
     border-radius: 10px;
@@ -149,7 +161,7 @@ input[type="submit"] {
     background-color: var(--color-d-purple);
 }
 
-input[type="submit"]:hover:not([disabled]) {
+form input[type="submit"]:hover:not([disabled]) {
     color: var(--color-white);
 }
 
@@ -157,29 +169,34 @@ button[disabled], input[disabled] {
     filter: grayscale();
 }
 
-input, input[type="text"], input[type="password"], input[type="number"], input[type="email"] {
+form input {
+    border-bottom: solid 2px var(--color-grey);
     border-radius: 3px;
-    border-style: solid;
     outline: none;
     padding: 0.25rem 0.5rem;
     color: var(--color-black);
     background-color: var(--color-l-grey);
-    border-color: var(--color-grey);
 }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus, input[type="email"]:focus {
-    border-color: var(--color-l-brown);
+form input:focus:not([disabled]) {
+    border-bottom: solid 2px var(--color-l-orange);
+}
+
+input[type="submit"]:focus:not([disabled]), 
+input[type="button"]:focus:not([disabled]), 
+button:focus:not([disabled]) {
+    border-color: var(--color-l-orange);
 }
 
 input:hover:not([disabled]) {
     border-color: var(--color-l-orange);
 }
 
-input.invalid {
+form input.invalid {
     border: solid 2px var(--color-l-red) !important;
 }
 
-input.valid {
+form input.valid {
     border: solid 2px var(--color-green);
 }
 
@@ -311,7 +328,7 @@ input.valid {
     }
 
     :root {
-        --font-size-base: 0.9em;
+        --font-size-base: 12px;
     }
 }
 
@@ -321,7 +338,7 @@ input.valid {
     }
 
     :root {
-        --font-size-base: 0.95em;
+        --font-size-base: 14px;
     }
 }
 

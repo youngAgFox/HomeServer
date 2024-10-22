@@ -2,6 +2,15 @@
 
 }
 
-#home-controls:hover {
+#home-controls-btn {
+    background-color: var(--color-l-brown);
+    border-radius: 30%;
+}
 
+#home-controls-btn:hover {
+    filter: invert(100%);
+}
+
+#home-controls.active {
+    
 }

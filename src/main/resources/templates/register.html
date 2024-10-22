@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <title>Registration | HomeServer</title>
     <link rel="stylesheet" href="/static/css/general.css">
-    <script type="module" th:src="@{/register-validate.js}" src="/static/register-validate.js"></script>
+    <link rel="stylesheet" href="/static/css/register.css">
+    <script type="module" src="/static/scripts/register-validate.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body class="flex-col">
   <p class="h-margin-20p tcenter" style="max-width: 90ch;">Welcome to the HomeServer! Please enter the below information to create a new account.</p>
   <p class="h-margin-20p tcenter" style="max-width: 90ch;">Think you already have an account? You should <a href="/login">sign in</a> instead.</p>
   <!-- th:action adds the csrf token -->
-  <form id="register-form" method="post" th:action="@{/register}" class="grid v-margin-20" 
-    style="grid-template-columns: 11ch 1fr; min-width: 20ch; max-width: 80ch; align-items: center; 
-      justify-content: center; width: 80%;">
-    <label for="account_key">Account Key*</label><input type="text" name="account_key" id="account_key" required maxlength="128" placeholder="The account key you were given - contact AJ with questions.">
+  <form id="register-form" method="post" th:action="@{/register}" class="grid v-margin-20">
+    <label for="account_key">Account Key*</label><input type="text" name="account_key" id="account_key" required maxlength="128" placeholder="Account key provided by admin">
     <label for="first_name">First Name*</label><input name="first_name" id="first_name" required maxlength="64"/>
     <label for="last_name">Last Name*</label><input name="last_name" id="last_name" required maxlength="64"/>
     <label for="email">Email</label><input type="email" name="email" id="email" maxlength="64" placeholder="Optional, used for notifications"/>
@@ -24,7 +23,7 @@
     <label for="password">Confirm Password*</label><input type="password" id="confirm-password" required minlength="8" maxlength="512">
     <p class="invalid rel" id="validate-text" style="grid-column: 2; padding-left: 0; min-height: 4ch;"></p>
     <div class="flex" style="grid-column: 2; grid-row: 10;">
-      <button id="register-btn" type="submit" class="v-margin-20" style="width: calc(max(100px, 45%));" disabled>Create</button>
+      <input id="register-btn" type="submit" class="v-margin-20" style="width: calc(max(100px, 45%));" disabled value="Create">
     </div>
   </form>
 </body>
