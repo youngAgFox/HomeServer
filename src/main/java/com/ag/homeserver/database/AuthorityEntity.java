@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name="Authorities")
-public class Authority {
+public class AuthorityEntity {
     @Id
     private String username;
     private String authority;

@@ -1,9 +1,6 @@
 package com.ag.homeserver.controller;
 
-import com.ag.homeserver.database.User;
 import com.ag.homeserver.database.UserRepository;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -52,7 +49,7 @@ public class HelloController {
 
     @AllArgsConstructor
     @Getter
-    private class Prod {
+    private static class Prod {
         public String name;
         public Double price;
         public boolean inStock;

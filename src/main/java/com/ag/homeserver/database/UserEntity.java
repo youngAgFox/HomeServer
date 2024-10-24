@@ -3,10 +3,7 @@ package com.ag.homeserver.database;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -15,8 +12,10 @@ import java.util.Collection;
 @Setter
 @ToString
 @EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "Users")
-public class User {
+public class UserEntity {
     @Id
     private String username;
     private String password;
@@ -28,5 +27,5 @@ public class User {
     private Timestamp updateDtm;
     private boolean enabled;
     @OneToMany(mappedBy="username")
-    private Collection<Authority> authorities;
+    private Collection<AuthorityEntity> authorities;
 }

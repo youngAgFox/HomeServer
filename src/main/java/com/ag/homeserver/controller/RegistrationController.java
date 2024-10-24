@@ -6,14 +6,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -43,7 +40,7 @@ public class RegistrationController {
         params = null; // don't accidentally use dirty input
 
         // confirm account_registry_key is valid
-        AccountRegistryKey accountRegistryKey = registryKeyRepository.findById(inputs.get("account_key"))
+        AccountRegistryKeyEntity accountRegistryKey = registryKeyRepository.findById(inputs.get("account_key"))
                 .orElseThrow(() -> new RuntimeException("Invalid account registry key."));
 
         if (null == accountRegistryKey.getUsername()) {
@@ -53,7 +50,7 @@ public class RegistrationController {
         }
 
         // create user account
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setUsername(inputs.get("username").trim());
         user.setPassword(passwordEncoder.encode(inputs.get("password")));
         user.setFirstName(inputs.get("first_name").toLowerCase().trim());
@@ -66,7 +63,7 @@ public class RegistrationController {
         log.info("Enabled User: " + user.toString());
 
         // configure default authorities
-        Authority authority = new Authority(user.getUsername(), AuthorityTypes.USER);
+        AuthorityEntity authority = new AuthorityEntity(user.getUsername(), AuthorityTypes.USER);
         authorityRepository.save(authority);
 
         // configure key

@@ -3,6 +3,7 @@ target/
 application.properties
 credentials.json
 tokens/
+data/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

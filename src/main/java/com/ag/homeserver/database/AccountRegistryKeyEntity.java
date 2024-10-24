@@ -9,10 +9,11 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @EqualsAndHashCode
 @Entity(name="account_registry_keys")
-public class AccountRegistryKey {
+public class AccountRegistryKeyEntity {
     @Id
     private String accountRegistryKeyCode;
     private String username;
