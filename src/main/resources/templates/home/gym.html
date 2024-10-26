@@ -3,9 +3,35 @@
 <head th:replace="~{ base :: common_header( title=~{::title}, scripts=~{::script} ?: ~{}, links=~{::link} ?: ~{}) }">
     <meta charset="UTF-8">
     <title>Gym | HomeServer</title>
-    <script src="/home/gym.js" type="module" defer></script>
+    <script src="/static/scripts/gym.js" type="module" defer></script>
     <link rel="stylesheet" href="/static/css/general.css">
+    <link rel="stylesheet" href="/static/css/gym.css">
 </head>
-<body>
+<body style="padding: 20px 10px;">
+    <div style="display: grid; grid-template-rows: 1fr min-content; height: 100%;">
+        <!-- STATS TAB -->
+        <div id="stats-tab-root" class="tab-root active flex-col" style="gap: 5px; justify-content: start; width: 100%;">
+            <h2>Completed Workouts</h2>
+            <div class="flex fwidth" style="gap: 5px; align-items: center; justify-content: center;">
+                <button id="cal-prev" class="cal-btn">&lt;</button>
+                <h3 id="cal-date" class="tcenter" style="width: 50%; width: 150px;"></h3>
+                <button id="cal-next" class="cal-btn" disabled>&gt;</button>
+            </div>
+            <div id="gym-calendar"></div>
+            <hr>
+            <h2>Stats</h2>
+            <h3>Muscles Hit</h3>
+            <h3>Test</h3>
+        </div>
+        <!-- WORKOUT TAB -->
+        <div id="workout-tab-root" class="tab-root">
+            <h2>Workout</h2>
+        </div>
+        <div class="flex" style="gap: 0; justify-content: center; align-items: center;">
+            <!-- TODO implement desktop version :: just divide screens in two -->
+            <button id="gym-tab-stats" class="gym-tab-btn phone-only tablet-only active">Stats</button>
+            <button id="gym-tab-workout" class="gym-tab-btn phone-only tablet-only">Workout</button>
+        </div>
+    </div>
 </body>
 </html>

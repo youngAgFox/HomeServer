@@ -1,8 +1,12 @@
 package com.ag.homeserver.database;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.*;
+
+import java.util.List;
 
 @EqualsAndHashCode
 @Getter
@@ -22,4 +26,6 @@ public class ExerciseEntity {
     private String mechanics;
     private String forceType;
     private String experienceLevel;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "exerciseId")
+    private List<ExerciseDetailEntity>  details;
 }

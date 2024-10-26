@@ -78,6 +78,17 @@ table {
     box-sizing: border-box;
 }
 
+hr {
+    border: none;
+    border-top: 3px double var(--color-grey);
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
 #header-area {
     display: flex;
     background-color: var(--color-blue);
@@ -141,7 +152,7 @@ button {
     background-color: var(--color-white);
 }
 
-button:hover:not(:disabled) {
+button:hover:not(:disabled):not(.active) {
     filter: hue-rotate(60deg) invert(10%);
 }
 

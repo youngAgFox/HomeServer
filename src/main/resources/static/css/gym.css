@@ -1,0 +1,64 @@
+.gym-tab-btn {
+    width: 120px; 
+    height: 30px; 
+    border-radius: 0;
+    color: var(--color-white);
+    font-size: 1.2em;
+}
+
+#gym-tab-workout:not(.active), #gym-tab-stats:not(.active) {
+    background-color: var(--color-d-grey);
+    opacity: 50%;
+}
+
+#gym-tab-workout:not(.active):hover, #gym-tab-stats:not(.active):hover {
+    border: solid 1px var(--color-white);
+    border-style: dashed;
+    opacity: 100%;
+}
+
+#gym-tab-workout.active, #gym-tab-stats.active {
+    border: solid 1px var(--color-white);
+}
+
+#gym-tab-stats {
+    background-color: var(--color-l-purple);
+}
+
+#gym-tab-workout {
+    background-color: var(--color-d-purple);
+}
+
+.tab-root:not(.active) {
+    display: none;
+}
+
+#gym-calendar {
+    width: 90%;
+    max-width: 600px;
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(7, 1fr);
+    overflow: visible;
+}
+
+.calendar-day {
+    font-size: 10px;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+}
+
+.cal-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: var(--color-white);
+    font-size: 1.25em;
+    /* border: solid 1px white; */
+    height: 24px;
+}
+
+.cal-btn:hover {
+    color: var(--color-l-red);
+}

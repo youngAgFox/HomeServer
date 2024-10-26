@@ -1,4 +1,4 @@
-package com.ag.homeserver.gym;
+package com.ag.homeserver.gym.calc;
 
 import com.ag.homeserver.gym.calc.*;
 
