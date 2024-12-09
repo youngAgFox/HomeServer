@@ -7,30 +7,131 @@
     <link rel="stylesheet" href="/static/css/general.css">
     <link rel="stylesheet" href="/static/css/gym.css">
 </head>
-<body style="padding: 20px 10px;">
-    <div style="display: grid; grid-template-rows: 1fr min-content; height: 100%;">
+<body style="padding: 10px;">
+    <div class="grid full" style="grid-template-rows: 1fr min-content; max-width: 100%;">
         <!-- STATS TAB -->
-        <div id="stats-tab-root" class="tab-root active flex-col" style="gap: 5px; justify-content: start; width: 100%;">
+        <div id="stats-tab-root" class="no-display active flex-col" style="justify-content: start; width: 100%; max-width: 100%;">
             <h2>Completed Workouts</h2>
-            <div class="flex fwidth" style="gap: 5px; align-items: center; justify-content: center;">
+            <div class="flex fwidth" style="align-items: center; justify-content: center;">
                 <button id="cal-prev" class="cal-btn">&lt;</button>
-                <h3 id="cal-date" class="tcenter" style="width: 50%; width: 150px;"></h3>
+                <h3 id="cal-date" class="tcenter" style="width: 150px;"></h3>
                 <button id="cal-next" class="cal-btn" disabled>&gt;</button>
             </div>
             <div id="gym-calendar"></div>
             <hr>
-            <h2>Stats</h2>
-            <h3>Muscles Hit</h3>
-            <h3>Test</h3>
+            <table>
+                <caption>Gym Stats</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Stat</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                </thead>
+                <!-- At some point replace this with thymeleaf gen stuff -->
+                <tbody>
+                    <tr>
+                        <td>Test1</td>
+                        <td>Test2</td>
+                    </tr>
+                    <tr>
+                        <td>TESSSSSSSSST</td>
+                        <td>Test</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <caption>Month PRs</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Exercise</th>
+                        <th scope="col">Mass</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
-        <!-- WORKOUT TAB -->
-        <div id="workout-tab-root" class="tab-root">
-            <h2>Workout</h2>
+
+        <!-- SELECT TAB -->
+        <div id="select-tab-root" class="no-display flex-col full" style="gap: 5px; justify-content: start;">
+            <h2>Select Workout</h2>
+            <hr>
+            <div class="flex-col full tcenter" 
+                style="align-items: center; justify-content: start;">
+                
+                <!-- Create Workout -->
+                <div class="full flex-col" style="justify-content: start;">
+                    <h3 style="margin-bottom: 5px;">Create Workout</h3>
+                    <form th:action="@{/home/gym/create-workout}" method="post" class="flex-col">
+                        <div class="grid" style="grid-template-columns: min-content 1fr; column-gap: 10px;">
+                            <input type="radio" name="create-workout" id="custom-workout-btn" value="custom-workout">
+                            <label for="custom-workout-btn">Custom Workout</label>
+                            <input type="radio" name="create-workout" id="generate-workout-btn" value="generate-workout">
+                            <label for="generate-workout-btn">Generate Workout</label>
+                            <div class="no-display grid" id="generate-workout-inputs" 
+                                style="grid-template-columns: subgrid; grid-column: span 2; 
+                                    row-gap: 6px; border-top: solid 1px var(--color-grey); padding-top: 5px;">
+                                <input type="radio" name="generate_workout" id="arm" value="arm">
+                                <label for="arm">Arm</label>
+                                <input type="radio" name="generate_workout" id="chest" value="chest">
+                                <label for="chest">Chest</label>
+                                <input type="radio" name="generate_workout" id="leg" value="leg">
+                                <label for="leg">Leg</label>
+                                <input type="radio" name="generate_workout" id="back" value="back">
+                                <label for="back">Back</label>
+                                <input type="radio" name="generate_workout" id="cardio" value="cardio">
+                                <label for="cardio">Cardio</label>
+                                <div class="grid" style="grid-column: span 2; grid-template-columns: subgrid; border-top: solid 1px var(--color-grey); padding-top: 5px;">
+                                    <input type="checkbox" name="generate_pairing" id="gen-pairing">
+                                    <label for="gen-pairing">Pairing Exercises</label>
+                                    <input type="checkbox" name="generate_warmup" id="gen-warmup">
+                                    <label for="gen-warmup">Warmup</label>
+                                    <div class="grid" style="grid-column: span 2; grid-template-columns: max-content 1fr; align-items: center;">
+                                        <label style="text-align: left;">Max Level:</label>
+                                        <select name="experience_level" id="exp-level">
+                                            <option value="Beginner" default>Beginner</option>
+                                            <option value="Intermediate">Intermediate</option>
+                                            <option value="Advanced">Advanced</option>
+                                        </select>
+                                        <label for="" style="text-align: left">Exercises:</label>
+                                        <input type="number" id="" value="6" max="10" min="4">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Create">
+                    </form>
+                </div>
+                
+                <hr>
+                <div class="flex-ctr" style="gap: 0;">
+                    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 0;">
+                        <button id="sub-tab-favorites" class="gym-tab-btn sub-tab-btn active">Favorites</button>
+                        <button id="sub-tab-recent" class="gym-tab-btn sub-tab-btn">Recent</button>
+                    </div>
+                </div>
+                <!-- Saved Workouts -->
+                 <div id="favorites-root" class="flex-col full no-display active">
+                    <h3>Favorite Workouts</h3>
+                    <div class="full" style="overflow-y: scroll; flex-grow: 1;">
+                        <p>No favorited workouts yet...</p>
+                        <!-- TODO add  -->
+                    </div>
+                 </div>
+                 <div id="recents-root" class="flex-col full no-display">
+                    <h3>Recent Workouts</h3>
+                    <div class="full" style="overflow-y: scroll; flex-grow: 1;">
+                        <p>No workout history yet... go get those gains!</p>
+                        <!-- TODO add  -->
+                    </div>
+                 </div>
+            </div>
         </div>
-        <div class="flex" style="gap: 0; justify-content: center; align-items: center;">
-            <!-- TODO implement desktop version :: just divide screens in two -->
-            <button id="gym-tab-stats" class="gym-tab-btn phone-only tablet-only active">Stats</button>
-            <button id="gym-tab-workout" class="gym-tab-btn phone-only tablet-only">Workout</button>
+        <div class="flex-ctr" style="gap: 0;">
+            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 0;">
+                <!-- TODO implement desktop version :: just divide screens in two -->
+                <button id="gym-tab-stats" class="gym-tab-btn active">Stats</button>
+                <button id="gym-tab-select" class="gym-tab-btn">Workout</button>
+            </div>
         </div>
     </div>
 </body>

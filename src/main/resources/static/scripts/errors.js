@@ -1,18 +1,23 @@
 const messages = [
-    "Not this S*IT again...",
-    "F*CK!",
+    "Not this again...",
     "Lord Almighty",
+    "Great Scott!",
     "For Pete's sake",
-    "'Im going to throat punch this monitor'",
+    "\"Im going to throat punch this monitor\"",
     "Hey, User! What did you do to my bug free program!",
-    "User skill issue.",
+    "Bug? Nah, simply a user skill issue.",
     "HMMMMMMM",
     "Did the developer even try?",
-    "We tried",
+    "Your attempts to use this program are futile",
     "Another day, another failure",
-    "Crunchy!",
+    "That is not supposed to happen...",
     "Is this a pigeon?",
-    "That's rough buddy"
+    "\"That's rough buddy\"",
+    "Why have you done this.",
+    "Are you trying to break the program?!",
+    "Yea sorry... had better things to do than fix the bugs apparently",
+    "Ope, Sorry 'bout that!",
+    "Listen here pal, this is getting ridiculous."
 ];
 
 const errorText = document.getElementById("error-exclamation");

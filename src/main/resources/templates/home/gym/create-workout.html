@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head th:replace="~{ base :: common_header( title=~{::title}, scripts=~{::script} ?: ~{}, links=~{::link} ?: ~{}) }">
+        <meta charset="UTF-8" />
+        <title>Create Workout | HomeServer</title>
+        <script src="/static/scripts/create-workout.js" type="module" defer></script>
+        <link rel="stylesheet" href="/static/css/create-workout.css" />
+        <link rel="stylesheet" href="/static/css/general.css" />
+    </head>
+    <body class="rel" style="overflow-y: auto;">
+        <h1 class="tcenter">Workout Editor</h1>
+        <div class="flex-col bg-d-grey" style="position: sticky; top: 0;">
+            <div class="flex-col" style="justify-content: start; flex-grow: 1; align-self: stretch; height: 100%; border-bottom: 1px solid var(--color-grey); padding-bottom: 5px;">
+                <div class="flex-col" style="align-items: center; justify-content: space-evenly; padding: 0 10%; align-self: stretch;">
+                    <div class="flex" style="align-self: stretch;">
+                        <label for="workout-name">Name:</label>
+                        <input type="text" name="workout_name" id="workout-name" style="max-width: 40ch; flex-grow: 1; align-self: stretch;">
+                    </div>
+                </div>
+                <div class="flex" style="justify-content: space-evenly; grid-column: span 2;">
+                    <button class="red-theme">Back</button>
+                    <button style="">Create</button>
+                </div>
+            </div>
+            <div class="flex-col" style="justify-content: start; position: sticky; top: 10px; padding: 10px 0; align-self: stretch; padding: 0 5% 10px 5%;">
+                <h2>Exercises</h2>
+                <ol id="exercise-container" class="fwidth" style="flex-grow: 1; max-width: 300px;">
+                    
+                </ol>
+            </div>
+        </div>
+        <div class="exercise-input flex" style="position: sticky; bottom: 10px; padding-top: 10px;">
+            <button id="add-exercise-btn">+</button>
+        </div>
+    </body>
+</html>

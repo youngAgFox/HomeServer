@@ -19,5 +19,8 @@ public class GymController {
     @GetMapping("/home/gym")
     public void setupGymModel(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         String username = userDetails.getUsername();
+        // populate recent and saved workout lists
+
+        // make sure the recent list has the workout to resume listed at the top
     }
 }

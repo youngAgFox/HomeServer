@@ -1,0 +1,19 @@
+.exercise-delete-btn {
+    width: 20px; 
+    height: 20px; 
+    filter: invert(100%);
+    border-radius: 5px;
+}
+
+.exercise-delete-btn:hover {
+    background-color: var(--color-red);
+    filter: none;
+}
+
+.exercise {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    align-items: center;
+    gap: 5px;
+    justify-content: space-evenly;
+}

@@ -1,36 +1,36 @@
 .gym-tab-btn {
-    width: 120px; 
-    height: 30px; 
+    min-width: 100px; 
+    min-height: 35px; 
     border-radius: 0;
+    /* make border transparent to stop text shifting when adding border on selection and hover */
+    border: solid 1px var(--color-grey);
     color: var(--color-white);
     font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#gym-tab-workout:not(.active), #gym-tab-stats:not(.active) {
-    background-color: var(--color-d-grey);
-    opacity: 50%;
+.sub-tab-btn {
+    font-size: 1em; 
+    min-height: 20px;
+    min-width: 60px;
 }
 
-#gym-tab-workout:not(.active):hover, #gym-tab-stats:not(.active):hover {
+.gym-tab-btn:not(.active):hover {
     border: solid 1px var(--color-white);
     border-style: dashed;
     opacity: 100%;
 }
 
-#gym-tab-workout.active, #gym-tab-stats.active {
+.gym-tab-btn.active {
     border: solid 1px var(--color-white);
+    background-color: var(--color-black);
 }
 
-#gym-tab-stats {
-    background-color: var(--color-l-purple);
-}
-
-#gym-tab-workout {
-    background-color: var(--color-d-purple);
-}
-
-.tab-root:not(.active) {
-    display: none;
+.gym-tab-btn:not(.active) {
+    background-color: var(--color-d-grey);
+    opacity: 50%;
 }
 
 #gym-calendar {
@@ -39,7 +39,6 @@
     display: grid;
     gap: 1px;
     grid-template-columns: repeat(7, 1fr);
-    overflow: visible;
 }
 
 .calendar-day {
@@ -61,4 +60,35 @@
 
 .cal-btn:hover {
     color: var(--color-l-red);
+}
+
+.gym-exercise-input {
+    color: white;
+    padding: 0.25ch 0.5ch;
+    border-bottom: solid 2px var(--color-black);
+}
+
+.gym-pairing-input {
+    color: gainsboro;
+    padding: 0.25ch 0.5ch;
+    border-bottom: solid 2px var(--color-black);
+    margin-left: 2ch;
+}
+
+table {
+    min-width: max(30%, 150px);
+    border: solid 1px var(--color-grey);
+}
+
+table > caption {
+    font-size: 1.25rem;
+}
+
+th {
+    text-decoration: underline;
+    padding-bottom: 0.5ch;
+}
+
+tbody > tr:nth-of-type(even) {
+    background-color: var(--color-d-green);
 }
